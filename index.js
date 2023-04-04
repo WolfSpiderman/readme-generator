@@ -1,3 +1,4 @@
+
 // TODO: Include packages needed for this application
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown.js");
@@ -53,17 +54,27 @@ const questions = [
     {
         name: "contribute",
         message: "How can others contribute to this project?",
-        type: "input"
+        type: "input",
+        when: answers => {
+            return answers.contents.includes("Contributions");
+        }
     },
     {
         name: "tests",
         message: "How can others run tests on your code?",
-        type: "input"
+        type: "input",
+        when: answers => {
+            return answers.contents.includes("Tests");
+        }
     },
     {
         name: "license",
         message: "What License is your project using?",
-        type: "checkbox"
+        type: "list",
+        choices: ["MIT", "Apashe 2.0", "BSD 3-Clause", "None or Other"],
+        when: answers => {
+            return answers.contents.includes("License");
+        }
     },
     {
         name: "gitname",
@@ -78,10 +89,22 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, err => {if (err) {console.log(err)}});
+}
 
 // TODO: Create a function to initialize app
 function init() {}
 
 // Function call to initialize app
 init();
+
+inquirer.prompt(questions).then(data => {
+    const markdownContent = generateMarkdown(data);
+    const readmeTitle = `${data.title}-README.md`;
+    console.log("Generating README...");
+    console.log("\n ---------------------------------\n");
+    console.log("Please note that the newly generated readme has been given a prefix of the project title for easy identification.\n It is recommended you rename the file once moved to its desired destination.\n It is also recommended checking for errors due to human error: \n You forgetting to use complete sentences, forgetting punctuation, or forgetting how to spell. Blame me for any errors and I'll be reporting you to Bear Evil™ Corp.");
+    console.log(data);
+    writeToFile(readmeTitle, markdownContent);
+});
