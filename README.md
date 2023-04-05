@@ -37,7 +37,7 @@ Starter code for this project was provided to me by Washington University's Codi
 [Professional README Guide](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide)
 ## Questions
 
-[WolfSpiderman](https://github.com/WolfSpiderman)
+[![Github](https://img.shields.io/badge/GitHub-WolfSpiderman-orange)](https://github.com/WolfSpiderman)
 
 Contact me with any questions:
 [Email](#)

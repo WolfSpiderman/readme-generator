@@ -32,7 +32,7 @@ Licensed under the [MIT License](https://opensource.org/licenses/MIT)
 
 ## Questions
 
-[WolfSpiderman](https://github.com/WolfSpiderman)
+[![Github](https://img.shields.io/badge/GitHub-WolfSpiderman-orange)](https://github.com/WolfSpiderman)
 
 Contact me with any questions:
 [Email](#)

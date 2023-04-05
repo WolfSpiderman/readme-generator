@@ -80,7 +80,7 @@ markdown += `## Credits
 
 ## Questions
 
-[${data.gitname}](https://github.com/${data.gitname})
+[![GitHub](https://img.shields.io/badge/GitHub-${data.gitname}-orange)](https://github.com/${data.gitname})
 
 Contact me with any questions:
 [Email](${data.email})`
