@@ -1,9 +1,8 @@
-
-// TODO: Include packages needed for this application
+// Imported packages
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown.js");
 const inquirer = require("inquirer");
-// TODO: Create an array of questions for user input
+// Questions for user to answer, some of which only appear depending on the answers selected for the contents question
 const questions = [
     {
         name: "title",
@@ -88,23 +87,15 @@ const questions = [
     }
 ];
 
-// TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, err => {if (err) {console.log(err)}});
 }
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
 
 inquirer.prompt(questions).then(data => {
     const markdownContent = generateMarkdown(data);
     const readmeTitle = `${data.title}-README.md`;
     console.log("Generating README...");
     console.log("\n ---------------------------------\n");
-    console.log("Please note that the newly generated readme has been given a prefix of the project title for easy identification.\n It is recommended you rename the file once moved to its desired destination.\n It is also recommended checking for errors due to human error: \n You forgetting to use complete sentences, forgetting punctuation, or forgetting how to spell. \nBlame me for any errors and I'll be reporting you to Bear Evil™ Corp.");
-    console.log(data);
+    console.log("Please note that the newly generated readme has been given a prefix of the project title for easy identification.\n \nIt is recommended you rename the file once moved to its desired destination.\n \nIt is also recommended checking for errors due to human error: \n \nYou forgetting to use complete sentences, forgetting punctuation, or forgetting how to spell.\n \nBlame me for any errors and I'll be reporting you to Bear Evil™ Corp.\n");
     writeToFile(readmeTitle, markdownContent);
 });
