@@ -28,12 +28,11 @@ Once you have cloned the forked repo, and have NodeJs installed, cd to the repo 
 
 Licensed under the [MIT License](https://opensource.org/licenses/MIT)
 
-
-
 ## Credits
 
-## Contact Me
+## Questions
 
 [WolfSpiderman](https://github.com/WolfSpiderman)
 
-[Email](hahahanicetry@nope)
+Contact me with any questions:
+[Email](#)
