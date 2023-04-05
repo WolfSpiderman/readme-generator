@@ -71,7 +71,7 @@ const questions = [
         name: "license",
         message: "What License is your project using?",
         type: "list",
-        choices: ["MIT", "Apashe 2.0", "BSD 3-Clause", "None or Other"],
+        choices: ["MIT", "Apashe 2.0", "BSD 3-Clause", "Other"],
         when: answers => {
             return answers.contents.includes("License");
         }
@@ -104,7 +104,7 @@ inquirer.prompt(questions).then(data => {
     const readmeTitle = `${data.title}-README.md`;
     console.log("Generating README...");
     console.log("\n ---------------------------------\n");
-    console.log("Please note that the newly generated readme has been given a prefix of the project title for easy identification.\n It is recommended you rename the file once moved to its desired destination.\n It is also recommended checking for errors due to human error: \n You forgetting to use complete sentences, forgetting punctuation, or forgetting how to spell. Blame me for any errors and I'll be reporting you to Bear Evil™ Corp.");
+    console.log("Please note that the newly generated readme has been given a prefix of the project title for easy identification.\n It is recommended you rename the file once moved to its desired destination.\n It is also recommended checking for errors due to human error: \n You forgetting to use complete sentences, forgetting punctuation, or forgetting how to spell. \nBlame me for any errors and I'll be reporting you to Bear Evil™ Corp.");
     console.log(data);
     writeToFile(readmeTitle, markdownContent);
 });
