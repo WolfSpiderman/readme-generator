@@ -78,10 +78,11 @@ ${data.tests}
 
 markdown += `## Credits
 
-## Contact Me
+## Questions
 
 [${data.gitname}](https://github.com/${data.gitname})
 
+Contact me with any questions:
 [Email](${data.email})`
 
 return markdown;
