@@ -1,7 +1,8 @@
 // Imported packages
-const fs = require("fs");
+const { writeFile } = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown.js");
 const inquirer = require("inquirer");
+
 // Questions for user to answer, some of which only appear depending on the answers selected for the contents question
 const questions = [
     {
@@ -87,15 +88,27 @@ const questions = [
     }
 ];
 
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, err => {if (err) {console.log(err)}});
-}
+const writeToFile = (fileName, data) => {
+  writeFile(fileName, data, err => {
+    if (err) {
+      console.log(err);
+    }
+  });
+};
 
-inquirer.prompt(questions).then(data => {
-    const markdownContent = generateMarkdown(data);
-    const readmeTitle = `${data.title}-README.md`;
-    console.log("Generating README...");
-    console.log("\n ---------------------------------\n");
-    console.log("Please note that the newly generated readme has been given a prefix of the project title for easy identification.\n \nIt is recommended you rename the file once moved to its desired destination.\n \nIt is also recommended checking for errors due to human error: \n \nYou forgetting to use complete sentences, forgetting punctuation, or forgetting how to spell.\n \nBlame me for any errors and I'll be reporting you to Bear Evil™ Corp.\n");
-    writeToFile(readmeTitle, markdownContent);
-});
+
+const main = async () => {
+  const data = await inquirer.prompt(questions);
+  const markdownContent = generateMarkdown(data);
+  const readmeTitle = `${data.title}-README.md`;
+
+  console.log("Generating README...");
+  console.log("\n ---------------------------------\n");
+  console.log(
+    "Please note that the newly generated readme has been given a prefix of the project title for easy identification.\n \nIt is recommended you rename the file once moved to its desired destination.\n \nIt is also recommended checking for errors due to human error: \n \nYou forgetting to use complete sentences, forgetting punctuation, or forgetting how to spell.\n \nBlame me for any errors and I'll be reporting you to Bear Evil™ Corp.\n"
+  );
+
+  writeToFile(readmeTitle, markdownContent);
+};
+
+main();
